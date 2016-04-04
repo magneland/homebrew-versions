@@ -18,9 +18,6 @@ class PerconaServer < Formula
   option "with-memcached", "Build with InnoDB Memcached plugin"
   option "with-local-infile", "Build with local infile loading support"
 
-  deprecated_option "enable-local-infile" => "with-local-infile"
-  deprecated_option "with-tests" => "with-test"
-
   depends_on "cmake" => :build
   depends_on "pidof" unless MacOS.version >= :mountain_lion
   depends_on "openssl"
