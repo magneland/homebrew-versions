@@ -1,16 +1,9 @@
-class PerconaServer < Formula
+class PerconaServer56 < Formula
   desc "Drop-in MySQL replacement"
   homepage "https://www.percona.com"
   url "https://www.percona.com/downloads/Percona-Server-5.6/Percona-Server-5.6.28-76.1/source/tarball/percona-server-5.6.28-76.1.tar.gz"
   version "5.6.28-76.1"
   sha256 "ab8ab794a58a82132645ae84b74de91c7f9a5bcf81f2162628ce8976a00a4fd4"
-
-  bottle do
-    revision 1
-    sha256 "b283468128a1450e20c73ceb16f5d6454a2cb834b5f7b889118456d6f9693af6" => :el_capitan
-    sha256 "56b11a60d823385bbe3f888d43d2780fbe7ae0ac96745ea624095480b96d0602" => :yosemite
-    sha256 "aa6efe7ebbcdfa1a26530300da885f56a33d3132f953886cdbe309fb545da6ec" => :mavericks
-  end
 
   option :universal
   option "with-test", "Build with unit tests"
@@ -39,7 +32,7 @@ class PerconaServer < Formula
   end
 
   # Where the database files should be located. Existing installs have them
-  # under var/percona, but going forward they will be under var/msyql to be
+  # under var/percona, but going forward they will be under var/mysql to be
   # shared with the mysql and mariadb formulae.
   def datadir
     @datadir ||= (var/"percona").directory? ? var/"percona" : var/"mysql"
