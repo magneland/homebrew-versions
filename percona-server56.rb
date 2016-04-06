@@ -173,4 +173,11 @@ class PerconaServer56 < Formula
     </plist>
     EOS
   end
+
+  test do
+    system "/bin/sh", "-n", "#{bin}/mysqld_safe"
+    (prefix/"mysql-test").cd do
+      system "./mysql-test-run.pl", "status", "--vardir=#{testpath}"
+    end
+  end
 end
