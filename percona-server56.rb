@@ -83,14 +83,6 @@ class PerconaServer56 < Formula
     # https://bugs.launchpad.net/percona-server/+bug/1531446
     args.concat %W[-DWITHOUT_TOKUDB=1]
 
-    if build.devel?
-      # MySQL >5.7.x mandates Boost as a requirement to build & has a strict
-      # version check in place to ensure it only builds against expected release.
-      # This is problematic when Boost releases don't align with MySQL releases.
-      (buildpath/"boost_1_59_0").install resource("boost")
-      args << "-DWITH_BOOST=#{buildpath}/boost_1_59_0"
-    end
-
     # To enable unit testing at build, we need to download the unit testing suite
     if build.with? "test"
       args << "-DENABLE_DOWNLOADS=ON"
